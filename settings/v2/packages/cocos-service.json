@@ -1,0 +1,96 @@
+{
+  "game": {
+    "app_id": "631620423",
+    "c_id": "0",
+    "name": "欢乐弹球"
+  },
+  "appConfigMaps": [
+    {
+      "app_id": "UNKNOW",
+      "config_id": "deb569"
+    },
+    {
+      "app_id": "631620423",
+      "config_id": "d84df3"
+    }
+  ],
+  "configs": [
+    {
+      "app_id": "UNKNOW",
+      "config_id": "deb569",
+      "config_name": "Default",
+      "config_remarks": "",
+      "services": [
+        {
+          "service_id": "313",
+          "enable": false,
+          "param": {}
+        },
+        {
+          "service_id": "314",
+          "enable": false,
+          "param": {}
+        },
+        {
+          "service_id": "278",
+          "enable": false,
+          "param": {}
+        }
+      ]
+    },
+    {
+      "app_id": "631620423",
+      "config_id": "d84df3",
+      "config_name": "Default",
+      "config_remarks": "",
+      "services": [
+        {
+          "service_id": "278",
+          "enable": false,
+          "param": {
+            "configId": "0b0950",
+            "plugin_version": "2.0.4_0.2.0"
+          }
+        }
+      ]
+    }
+  ],
+  "sdkHubConfigSet": [
+    {
+      "id": "bec87b",
+      "name": "HUAWEI  AppGallery Connect",
+      "platform": "3",
+      "channelID": "161221",
+      "channelName": "HUAWEI  AppGallery Connect",
+      "remarks": "HUAWEI  AppGallery Connect",
+      "plugins": []
+    },
+    {
+      "id": "0b0950",
+      "name": "欢乐弹球",
+      "remarks": "",
+      "channelID": "161221",
+      "channelName": "HUAWEI  AppGallery Connect",
+      "platform": "3",
+      "plugins": [
+        {
+          "hasParam": true,
+          "packageName": "huawei-hms",
+          "pParam": {
+            "HMSResConfigs": ""
+          },
+          "pId": "2412",
+          "pName": "HUAWEI HMS",
+          "pType": 30,
+          "pUseType": 26,
+          "hasLocal": true,
+          "hasUpdate": false,
+          "isInstall": false,
+          "requireParam": true,
+          "pVersion": "2.0.2_5.3.0",
+          "installProgress": true
+        }
+      ]
+    }
+  ]
+}
