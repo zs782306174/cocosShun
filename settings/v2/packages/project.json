@@ -3,11 +3,20 @@
   "general": {
     "renderPipeline": "5d45ba66-829a-46d3-948e-2ed3fa7ee421",
     "designResolution": {
-      "width": 720,
-      "height": 1280
+      "width": 1280,
+      "height": 720
     }
   },
   "script": {
     "loose": false
-  }
+  },
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "QI_PAN"
+      }
+    ]
+  },
+  "layer": []
 }

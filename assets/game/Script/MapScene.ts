@@ -15,11 +15,12 @@ const { ccclass, property } = _decorator;
 export class MapScene extends Component {
 
     @property(Node)
+    cell:Node;
+    @property(Node)
     prefab: Node;
     scene:Scene
     start() {
-        console.log(director.getScene());
-        
+       
         PhysicsSystem.instance.enable = true;
         let config = [
             [0, 0, 0, 0, 0, 0, 1],
@@ -34,10 +35,10 @@ export class MapScene extends Component {
         let map = new HexMap(8, 7);
         for (let y = 0; y < 8; y++) {
             for (let x = 0; x < 7; x++) {
-                let ball = instantiate(this.prefab);
+                let ball = instantiate(this.cell);
                 let node = map.getNode(x,y);
-                ball.parent = this.prefab.parent;
-                ball.setPosition(node.worldPos.x,node.worldPos.y,-0.5);
+                ball.parent = this.cell.parent;
+                ball.setPosition(node.worldPos.x,node.worldPos.y);
             }
         }
         let ball = instantiate(this.prefab);
@@ -74,6 +75,10 @@ export class MapScene extends Component {
         let skill = new Skill(null);
         let tree = new behaviourTree.BehaviorTree(entity,root);
         console.log(tree);
+    }
+
+    initMap(){
+        
     }
     update(dt){
         this.scene?.update(dt);

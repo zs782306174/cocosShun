@@ -8,11 +8,11 @@ import { SkillComponent } from "./component/SkillComponent";
 import { UnitViewComponent } from "./component/UnitViewComponent";
 
 export default class Factory {
-    createScene(configs:any[]){
+    static createScene(configs:any[]){
         let scene = new Scene();
     }
 
-    createUnit(scene:Scene,configId:number,tag:number,pos:Vec2){
+    static createUnit(scene:Scene,configId:number,tag:number,pos:Vec2){
         let entity = new Entity();
         entity.tag = tag;
         entity.addComponent(PropertyComponent);
