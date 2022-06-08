@@ -1,6 +1,6 @@
 # 项目简介
 
-一份包含面板的扩展，该面板基于 vue3.x 开发，展示了如何通过消息和菜单打开面板，以及与面板通讯。
+拖拽绑定ui的方式太慢了，不如试试这个一键绑定插件
 
 ## 开发环境
 
@@ -17,8 +17,13 @@ npm run build
 
 ## 用法
 
-启用扩展后，点击主菜单栏中的 `面板 -> uibinder -> 默认面板`，即可打开扩展的默认面板。
+将需要绑定的节点按以下方式命名
+#### [组件键值]@[成员名称]
+#### 例如：
+    ProgressBar@progressBar
+    Button@startBtn
+可绑定的组件类型定义在 Const.ts 中，可以自由更改，改完记得构建
 
-依次点击顶部菜单的 `开发者 -> uibinder -> 发送消息给面板` 即可发送消息给默认面板，如果此时存在默认面板，将会调用面板的 `hello` 方法。
-
-点击 `发送消息给面板` 后，根据 `package.json` 中 `contributions.menu` 的定义将发送一条消息 `send-to-panel` 给扩展。根据 `package.json` 中 `contributions.messages` 的定义当扩展收到 `send-to-panel` 后将会使 `default` 面板调用 `hello` 方法。
+选中根节点 按快捷键 alt+g 生成脚本
+再按一次 alt+g 绑定
+![截图说明](static/img/jietu.jpg)

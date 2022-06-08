@@ -20,18 +20,7 @@ export class MapScene extends Component {
     prefab: Node;
     scene:Scene
     start() {
-       
         PhysicsSystem.instance.enable = true;
-        let config = [
-            [0, 0, 0, 0, 0, 0, 1],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [1, 0, 0, 0, 0, 0, 0],
-        ]
         let map = new HexMap(8, 7);
         for (let y = 0; y < 8; y++) {
             for (let x = 0; x < 7; x++) {
@@ -60,6 +49,8 @@ export class MapScene extends Component {
         entity1.getComponent(MoveComponent).speed = 2;
         this.scene.addEntity(entity1);
         this.scene.addEntity(entity);
+        //@ts-ignore
+        console.log(window.ServiceCenter);
         
         entity.getComponent(MoveComponent).findPath(map.getNode(0, 0),map.getNode(6, 6));
         entity1.getComponent(MoveComponent).findPath(map.getNode(0, 1),map.getNode(3, 4));

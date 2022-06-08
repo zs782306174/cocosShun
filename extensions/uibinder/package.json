@@ -28,17 +28,20 @@
             }
         ],
         "messages": {
-            "open-panel": {
-                "methods": [
-                    "open_panel"
-                ]
-            },
+           
             "bind": {
                 "methods": [
                     "bind"
                 ]
             }
         },
+        "shortcuts": [
+            {
+                "message": "bind",
+                "win": "alt+g",
+                "mac": "alt+g"
+            }
+        ],
         "scene": {
             "script": "./dist/scene.js"
         }

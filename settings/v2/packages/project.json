@@ -16,7 +16,11 @@
         "index": 1,
         "name": "QI_PAN"
       }
-    ]
+    ],
+    "collisionMatrix": {
+      "0": 1,
+      "1": 0
+    }
   },
   "layer": []
 }

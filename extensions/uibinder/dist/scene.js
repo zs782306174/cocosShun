@@ -8,11 +8,21 @@ const fs_extra_1 = require("fs-extra");
 const Const_1 = __importDefault(require("./Const"));
 exports.methods = {
     async bind() {
-        var _a, _b;
         //@ts-ignore
-        let NodeRoot = (_b = (_a = cc.director.getScene()) === null || _a === void 0 ? void 0 : _a.getChildByName('Canvas')) === null || _b === void 0 ? void 0 : _b.children[0];
-        let nodes = Editor.Selection.getSelected('node');
-        console.log(nodes);
+        let NodeRoot = cc.director.getScene();
+        let ids = Editor.Selection.getSelected('node');
+        console.log(ids);
+        if (!ids || !ids.length) {
+            console.log('未选中任何节点！！！！');
+        }
+        else {
+            for (const id of ids) {
+                let node = this.getNode(NodeRoot, id);
+                this.start(node);
+            }
+        }
+    },
+    async start(NodeRoot) {
         let ProjectDir = Editor.Project.path;
         let ScriptName = NodeRoot.name;
         console.log(ScriptName);
@@ -22,13 +32,17 @@ exports.methods = {
         this.findNodes(NodeRoot, nodeMaps, importMaps);
         let _str_import = ``;
         for (let key in importMaps) {
-            _str_import += `import ${key} from "${this.getImportPath(importMaps[key], ScriptPath)}"\n`;
+            let path = this.getImportPath(importMaps[key], ScriptPath);
+            if (!_str_import.includes(path))
+                _str_import += `import ${key} from "${path}"\n`;
         }
         let _str_content = ``;
         let coms = '';
         for (let key in nodeMaps) {
             let com = nodeMaps[key];
-            coms += com.constructor.name + ',';
+            if (!coms.includes(com.constructor.name)) {
+                coms += com.constructor.name + ',';
+            }
             _str_content += `\t@property(${com.constructor.name})\n\t${key}: ${com.constructor.name};\n`;
         }
         let strScript = `
@@ -56,6 +70,19 @@ ${_str_content}
         }
         for (let key in nodeMaps) {
             comp[key] = nodeMaps[key];
+        }
+    },
+    getNode(node, id) {
+        for (const child of node.children) {
+            if (child._id == id) {
+                return child;
+            }
+            else {
+                let node = this.getNode(child, id);
+                if (node) {
+                    return node;
+                }
+            }
         }
     },
     /** 计算相对路径 */
@@ -96,13 +123,14 @@ ${_str_content}
                 let type = Const_1.default.SeparatorMap[names[0]] || names[0];
                 let propertyName = names[1];
                 // 进入到这里， 就表示可以绑定了
-                if (_nodeMaps[propertyName]) {
-                }
                 if (type === "cc.Node") {
                     _nodeMaps[propertyName] = node;
                 }
                 else {
-                    _nodeMaps[propertyName] = node.getComponent(type);
+                    let component = node.getComponent(type);
+                    if (component) {
+                        _nodeMaps[propertyName] = component;
+                    }
                 }
                 // // 检查是否是自定义组件
                 // if (!_importMaps[type.name] && type.name.indexOf("") === -1 && node.getComponent(type)) {

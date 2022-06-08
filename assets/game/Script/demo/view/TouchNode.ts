@@ -34,7 +34,7 @@ export default class TouchNode extends Component {
         e.getLocation(this.pos);
         console.log(this.pos);
         this.cameraCom.screenPointToRay(this.pos.x, this.pos.y, this.outRay);
-        PhysicsSystem.instance.raycast(this.outRay, 1);
+        PhysicsSystem.instance.raycast(this.outRay,1 <<0 );
         let result = PhysicsSystem.instance.raycastResults;
         console.log(result);
         if (result.length > 0) {
@@ -62,7 +62,7 @@ export default class TouchNode extends Component {
     onTouchMove(e: Touch) {
         e.getLocation(this.pos);
         this.cameraCom.screenPointToRay(this.pos.x, this.pos.y, this.outRay);
-        PhysicsSystem.instance.raycast(this.outRay, 2);
+        PhysicsSystem.instance.raycast(this.outRay, 1 <<1 );
         let result = PhysicsSystem.instance.raycastResults;
         console.log(result);
         console.log(this.catchNode);
