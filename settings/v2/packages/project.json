@@ -8,7 +8,7 @@
     }
   },
   "script": {
-    "loose": false
+    "loose": true
   },
   "physics": {
     "collisionGroups": [

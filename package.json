@@ -5,5 +5,12 @@
   "version": "3.3.0",
   "creator": {
     "version": "3.3.0"
+  },
+  "scripts": {
+    "build-proto:pbjs": "pbjs --dependency protobufjs/minimal.js --target static-module --wrap commonjs --out ./proto/proto.js ./proto/*.proto",
+    "build-proto:pbts": "pbts --main --out ./proto/proto.d.ts ./proto/*.js"
+  },
+  "dependencies": {
+    "protobufjs": "^6.11.3"
   }
 }

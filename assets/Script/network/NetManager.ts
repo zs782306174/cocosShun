@@ -11,7 +11,7 @@ export class NetManager {
     private static _instance: NetManager;
     protected _channels: { [key: number]: NetNode } = {};
 
-    public static getInstance(): NetManager {
+    public static get instance(): NetManager {
         if (!this._instance) {
             this._instance = new NetManager();
         }

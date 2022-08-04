@@ -4,6 +4,7 @@
 
   /* Add your custom configuration here. */
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true, // 需要开启
     "strict": false
   }
 }

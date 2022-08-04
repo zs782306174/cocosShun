@@ -1,0 +1,102 @@
+
+package msg;
+syntax = "proto3";
+
+
+message KV {
+    int32 k = 0;
+    int32 v = 1;
+}
+
+message LoginRequest{
+    int32 rpcid = 0;
+    string email = 2;
+    
+    string passWord = 3;
+}
+
+message UserInfo {
+    int32 id = 0;
+    string eMail = 1;
+    string passWord = 2;
+    string name = 3;
+    int32 lv = 4;
+    repeated KV goods = 5;
+}
+
+message LoginResponse{
+    int32 rpcid = 0;
+    int32 code = 1;
+    UserInfo userInfo = 2;
+    string key = 3;
+    string adress = 4;
+}
+message GateKeyRequest{
+    int32 rpcid = 0;
+    UserInfo userInfo = 2;
+}
+message GateKeyResponse{
+    int32 rpcid = 0;
+    string key = 3;
+    string adress = 4;
+}
+message ConnectGateRequest{
+    int32 rpcid = 0;
+    string key = 3;
+}
+message ConnectGateResponse{
+    int32 rpcid = 0;
+    int32 code = 1;
+    string key = 3;
+}
+message CreateRoomRequest {
+    int32 rpcid = 0;
+    int32 playerId = 1;
+}
+message CreateRoomResponse {
+    int32 rpcid = 0;
+    int32 roomId = 1;
+}
+message EnterRoomRequest {
+    int32 rpcid = 0;
+    int32 playerId = 1;
+    int32 roomId = 2;
+}
+message EnterRoomResponse {
+    int32 rpcid = 0;
+    int32 playerId = 1;
+    int32 roomId = 2;
+}
+message QuitRoomRequest {
+    int32 rpcid = 0;
+    int32 playerId = 1;
+    int32 roomId = 2;
+}
+message QuitRoomResponse {
+    int32 rpcid = 0;
+    int32 playerId = 1;
+}
+message MatchRequest {
+    int32 rpcid = 0;
+    int32 roomId = 1;
+}
+
+message MatchResponse {
+    int32 rpcid = 0;
+    int32 code = 1;
+}
+
+message CancelMatchRequest {
+    int32 rpcid = 0;
+    int32 roomId = 1;
+}
+
+message CancelMatchResponse {
+    int32 rpcid = 0;
+    int32 code = 1;
+}
+
+message MatchSuccess {
+    int32 rpcid = 0;
+    int32 code = 1;
+}
